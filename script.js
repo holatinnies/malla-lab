@@ -94,11 +94,9 @@ let completados = JSON.parse(localStorage.getItem("completados") || "[]");
 
 function render() {
   const contenedor = document.getElementById("malla");
-  const progresoElem = document.getElementById("progreso");
-const totalRamos = malla.reduce((acc, sem) => acc + sem.ramos.length, 0);
-const porcentaje = Math.round((completados.length / totalRamos) * 100);
-progresoElem.textContent = `🔓 Has completado ${completados.length} de ${totalRamos} asignaturas (${porcentaje}%)`;
   contenedor.innerHTML = "";
+
+  let totalRamos = 0;
 
   malla.forEach(nivel => {
     const div = document.createElement("div");
@@ -106,6 +104,7 @@ progresoElem.textContent = `🔓 Has completado ${completados.length} de ${total
     div.innerHTML = `<h2>${nivel.nombre}</h2>`;
 
     nivel.ramos.forEach(ramo => {
+      totalRamos++;
       const elem = document.createElement("div");
       elem.className = "ramo";
       elem.textContent = ramo.nombre;
@@ -134,6 +133,31 @@ progresoElem.textContent = `🔓 Has completado ${completados.length} de ${total
 
     contenedor.appendChild(div);
   });
+
+  actualizarProgreso(totalRamos);
+}
+
+function actualizarProgreso(total) {
+  const progreso = completados.length;
+  const porcentaje = Math.round((progreso / total) * 100);
+
+  const barra = document.getElementById("barra-progreso");
+  const texto = document.getElementById("progreso-texto");
+
+  barra.style.width = `${porcentaje}%`;
+  texto.textContent = `🔓 Has completado ${progreso} de ${total} asignaturas (${porcentaje}%)`;
+}
+
+function reiniciarProgreso() {
+  if (confirm("¿Seguro que quieres reiniciar tu progreso?")) {
+    localStorage.removeItem("completados");
+    completados = [];
+    render();
+  }
+}
+
+function exportarPDF() {
+  window.print(); // forma simple de exportar en navegadores
 }
 
 render();
