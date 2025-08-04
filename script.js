@@ -94,6 +94,10 @@ let completados = JSON.parse(localStorage.getItem("completados") || "[]");
 
 function render() {
   const contenedor = document.getElementById("malla");
+  const progresoElem = document.getElementById("progreso");
+const totalRamos = malla.reduce((acc, sem) => acc + sem.ramos.length, 0);
+const porcentaje = Math.round((completados.length / totalRamos) * 100);
+progresoElem.textContent = `🔓 Has completado ${completados.length} de ${totalRamos} asignaturas (${porcentaje}%)`;
   contenedor.innerHTML = "";
 
   malla.forEach(nivel => {
