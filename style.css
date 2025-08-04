@@ -1,0 +1,36 @@
+body {
+  font-family: sans-serif;
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.semestre {
+  margin: 20px 0;
+  padding: 10px;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+.ramo {
+  margin: 6px 0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.ramo.bloqueado {
+  background-color: #ffdddd;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ramo.completado {
+  background-color: #c8e6c9;
+  text-decoration: line-through;
+}
