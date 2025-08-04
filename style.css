@@ -1,36 +1,66 @@
+/* Fondo general */
 body {
-  font-family: sans-serif;
-  background-color: #f7f7f7;
-  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #800000; /* burdeo */
+  color: #ffffff;
+  margin: 0;
+  padding: 30px;
 }
 
+/* Título */
 h1 {
   text-align: center;
+  font-size: 28px;
+  margin-bottom: 40px;
 }
 
+/* Contenedor de semestre */
 .semestre {
-  margin: 20px 0;
-  padding: 10px;
-  background: white;
-  border: 2px solid #ccc;
-  border-radius: 8px;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.semestre h2 {
+  margin-top: 0;
+  font-size: 22px;
+  border-left: 6px solid #800000;
+  padding-left: 12px;
+  color: #333333;
+}
+
+/* Botón de ramo */
 .ramo {
-  margin: 6px 0;
-  padding: 8px 12px;
-  border-radius: 6px;
-  background-color: #eee;
+  background-color: #f5f5f5;
+  margin: 8px 0;
+  padding: 12px 16px;
+  border-radius: 10px;
   cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 15px;
+  border: 1px solid #dddddd;
 }
 
-.ramo.bloqueado {
-  background-color: #ffdddd;
-  cursor: not-allowed;
-  opacity: 0.6;
+.ramo:hover {
+  background-color: #eaeaea;
 }
 
+/* Ramo completado */
 .ramo.completado {
-  background-color: #c8e6c9;
+  background-color: #d4edda;
+  color: #2e7d32;
   text-decoration: line-through;
+  font-weight: bold;
+}
+
+/* Ramo bloqueado */
+.ramo.bloqueado {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #f5c6cb;
+  opacity: 0.7;
+  cursor: not-allowed;
 }
